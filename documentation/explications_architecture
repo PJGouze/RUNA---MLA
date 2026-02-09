@@ -1,0 +1,37 @@
+Global encoder (CLIP Image Encoder):
+
+Takes the entire image as input.
+Generates a global representation in the CLIP latent space (e.g., 512-dimensional vector for ViT-B/32).
+Role: Captures the general context of the image.
+
+
+Regional Encoder (CLIP Image Encoder + RoI):
+
+Takes regions of interest (RoI) extracted from the image (e.g., via Detectron2 or another object detector).
+Each region (bounding box) is resized and encoded by the same CLIP image encoder (or another model if necessary).
+Generates a regional representation for each object/box.
+Role: Capture the local characteristics of each object.
+
+
+
+Text encoder (CLIP Text Encoder):
+
+Takes textual descriptions of object classes (e.g., “cat,” “car,” “tree”).
+Generates a textual embedding for each class in the same latent space as the image encoders.
+Role: Provide a semantic representation of known classes (IDs).
+
+
+
+
+
+2. Comparison of Representations
+
+
+Alignment in latent space:
+
+Global and regional representations (from image encoders) are compared to textual embeddings (from the text encoder).
+Comparison method:
+
+Cosinus similarity: Measures the proximity between a regional representation and the textual embeddings of the classes.
+Uncertainty score: For a given region, if its representation is far from all the textual embeddings of the known classes, it is considered OOD (Out-of-Distribution).
+
