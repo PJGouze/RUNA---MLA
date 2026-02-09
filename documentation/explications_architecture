@@ -28,3 +28,14 @@ Comparison method:
 Cosinus similarity: Measures the proximity between a regional representation and the textual embeddings of the classes.
 Uncertainty score: For a given region, if its representation is far from all the textual embeddings of the known classes, it is considered OOD (Out-of-Distribution).
 
+
+Schematics : 
+
+Global Image ─────▶ Global Encoder  CLIP ─────▶ Latent space
+                     │
+Regions (RoI) ───────┼─────▶ Regional Encoder CLIP ─────▶ Latent space
+                     │
+Texts (classes) ────┘─────▶ Textual Encoder CLIP ─────▶ Embeddings textuels latent space)
+                     │
+                     ▼
+           Comparison (cosinus similarity) ─────▶ Scoring (ID/OOD)
