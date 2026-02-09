@@ -35,7 +35,7 @@ Global Image ─────▶ Global Encoder  CLIP ─────▶ Latent s
                      │
 Regions (RoI) ───────┼─────▶ Regional Encoder CLIP ─────▶ Latent space
                      │
-Texts (classes) ────┘─────▶ Textual Encoder CLIP ─────▶ Embeddings textuels latent space)
+Texts (classes) ────-┘─────▶ Textual Encoder CLIP ─────▶ Embeddings textuels latent space)
                      │
                      ▼
            Comparison (cosinus similarity) ─────▶ Scoring (ID/OOD)
